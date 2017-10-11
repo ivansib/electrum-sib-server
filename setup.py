@@ -4,9 +4,9 @@ setup(
     name="electrum-sibcoin-server",
     version="1.0",
     scripts=['run_electrum_sibcoin_server','electrum-sibcoin-server'],
-    install_requires=['plyvel', 'jsonrpclib', 'irc >= 11, <=14.0', 'x11_hash'],
+    install_requires=['plyvel','jsonrpclib', 'irc >= 11, <=14.0', 'x11_hash'],
     package_dir={
-        'electrumserver': 'src'
+        'electrumserver':'src'
         },
     py_modules=[
         'electrumserver.__init__',
