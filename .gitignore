@@ -8,3 +8,8 @@ build/
 dist/
 electrum_sibcoin_server.egg-info/
 env/
+electrum_data/addr/*
+electrum_data/hist/*
+electrum_data/undo/*
+electrum_data/utxo/*
+electrum_data/blockchain_headers
