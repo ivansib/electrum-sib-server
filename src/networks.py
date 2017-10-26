@@ -1,6 +1,6 @@
 # Main network and testnet3 definitions
 
-# Dash src/chainparams.cpp
+# Sibcoin src/chainparams.cpp
 params = {
     'sibcoin_main': {
         'pubkey_address': 63,
