@@ -407,7 +407,7 @@ class BlockchainProcessor(Processor):
             try:
                 tx = deserialize.parse_Transaction(vds, is_coinbase)
             except:
-                print_log("ERROR(deserialize): cannot parse", tx_hash)
+                print_log("ERROR: cannot parse", tx_hash)
                 continue
             tx_hashes.append(tx_hash)
             txdict[tx_hash] = tx
@@ -700,11 +700,6 @@ class BlockchainProcessor(Processor):
                 self.storage.height = self.storage.height + 1
                 self.write_header(self.block2header(next_block), sync)
                 self.storage.last_hash = next_block_hash
-                # print_log(next_block, "next_block")
-                # print_log(next_block_hash, "next_block_hash")
-                # print_log(n, "n")
-                # print_log(prev_root_hash, "prev_root_hash")
-                # break
 
             else:
 
@@ -855,7 +850,6 @@ class BlockchainProcessor(Processor):
     def invalidate_cache(self, address):
         with self.cache_lock:
             if address in self.history_cache:
-                # print_log("cache: invalidating", address)
                 del self.history_cache[address]
 
         with self.watch_lock:
