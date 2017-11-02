@@ -15,3 +15,5 @@ electrum_data/utxo/*
 electrum_data/blockchain_headers
 electrum_data/
 data-sibcoind/
+electrum_sib.conf
+.idea/

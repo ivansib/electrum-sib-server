@@ -12,7 +12,7 @@ fi
 source_dir=$(cd "$(dirname "${BASH_SOURCE[0]}" )"; pwd)
 
 
-electrum_config="/etc/electrum-dash.conf"
+electrum_config="/etc/electrum_sib.conf"
 function read_config()
 {
     text=$1
@@ -26,7 +26,7 @@ function write_config()
 # create config file
 if [ ! -f $electrum_config ]; then
     echo "Creating config file"
-    cp $source_dir"/electrum-dash.conf.sample" $electrum_config
+    cp $source_dir"/electrum_sib.conf.sample" $electrum_config
 fi
 
 
@@ -47,13 +47,13 @@ fi
 if [ ! id -u $user >/dev/null 2>&1 ]; then
     echo "adding user $user"
     useradd $user
-    echo "$user hard nofile 65536" >> /etc/security/limits.conf
-    echo "$user soft nofile 65536" >> /etc/security/limits.conf
+    echo "$user hard nofile 131072" >> /etc/security/limits.conf
+    echo "$user soft nofile 131072" >> /etc/security/limits.conf
 fi
 
 
 # read path from config
-default_path="/var/electrum-dash-server"
+default_path="/var/electrum-server"
 path=$(read_config "path")
 if ! [ "$path" ]; then
     read -p "Path for database (default: $default_path) " -r
@@ -66,7 +66,7 @@ if ! [ "$path" ]; then
 fi
 
 # read path from config
-default_logfile="/var/log/electrum-dash.log"
+default_logfile="/var/log/electrum-sibcoin.log"
 logfile=$(read_config "logfile")
 if ! [ "$logfile" ]; then
     read -p "Path of logfile (default: $default_logfile) " -r
@@ -108,16 +108,16 @@ fi
 chown $user:$user $logfile
 
 
-dashd_user=$(read_config "dashd_user")
-if ! [ "$dashd_user" ]; then
-    read -p "rpcuser (from your dash.conf file): " -r
-    write_config "dashd_user" $REPLY
+sibcoind_user=$(read_config "sibcoind_user")
+if ! [ "$sibcoind_user" ]; then
+    read -p "rpcuser (from your sibcoin.conf file, leave empty for localhost): " -r
+    write_config "sibcoind_user" $REPLY
 fi
 
-dashd_password=$(read_config "dashd_password")
-if ! [ "$dashd_password" ]; then
-    read -p "rpcpassword (from your dash.conf file): " -r
-    write_config "dashd_password" $REPLY
+sibcoind_password=$(read_config "sibcoind_password")
+if ! [ "$sibcoind_password" ]; then
+    read -p "rpcpassword (from your sibcoin.conf file, leave emtpy for localhost): " -r
+    write_config "sibcoind_password" $REPLY
 fi
 
 
