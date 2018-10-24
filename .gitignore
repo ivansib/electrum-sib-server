@@ -4,3 +4,7 @@
 .gitignore
 electrum.conf
 .idea/
+build/
+dist/
+electrum_sibcoin_server.egg-info/
+env/
