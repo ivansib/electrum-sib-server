@@ -35,9 +35,15 @@ pruning_limit = 100
 #utxo_cache = 134217728
 #addr_cache = 16777216
 
-[dashd]
-dashd_host = localhost
-dashd_port = 8332
-# user and password from dash.conf
-dashd_user =
-dashd_password =
+[sibcoind]
+sibcoind_host = localhost
+sibcoind_port = 1944
+# user and password from sibcoin.conf
+sibcoind_user = 
+sibcoind_password =
+
+# for testing
+# sibcoind_user = test
+# sibcoind_password = R3IBH5IJJmC6EUFcn00nA8h73dTjAfS3XjG4WCXoGXY=
+# in sibcoin.conf need to add
+# rpcauth=test:d79ce826bbfedd340d5e239618b6e30$38e5744551b5ee09b6547726bbd10492be13bfea029491c4e0bc4559d09716d9
