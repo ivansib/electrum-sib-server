@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name="electrum-sibcoin-server",
     version="1.0",
-    scripts=['run_electrum_server.py','electrum-server'],
+    scripts=['run_electrum_sibcoin_server','electrum-sibcoin-server'],
     install_requires=['plyvel', 'jsonrpclib', 'irc >= 11, <=14.0'],
     package_dir={
         'electrumserver': 'src'
@@ -17,7 +17,6 @@ setup(
         'electrumserver.blockchain_processor',
         'electrumserver.server_processor',
         'electrumserver.processor',
-        'electrumserver.version',
         'electrumserver.ircthread',
         'electrumserver.stratum_tcp'
     ],

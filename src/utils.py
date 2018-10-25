@@ -6,6 +6,7 @@ from itertools import imap
 import os
 import logging
 import logging.handlers
+import x11_hash
 
 __b58chars = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
 __b58base = len(__b58chars)
@@ -17,9 +18,13 @@ SCRIPT_ADDRESS = 40
 def rev_hex(s):
     return s.decode('hex')[::-1].encode('hex')
 
+def HashX11(x):
+    return x11_hash.getPoWHash(x)
+
 
 def Hash(x):
     return hashlib.sha256(hashlib.sha256(x).digest()).digest()
+
 
 
 def hash_encode(x):
