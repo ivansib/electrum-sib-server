@@ -215,6 +215,7 @@ def parse_TxIn(vds):
     d = dict()
     d['prevout_hash'] = hash_encode(vds.read_bytes(32))
     d['prevout_n'] = vds.read_uint32()
+    scriptSig = vds.read_bytes(vds.read_compact_size())
     d['sequence'] = vds.read_uint32()
     return d
 
