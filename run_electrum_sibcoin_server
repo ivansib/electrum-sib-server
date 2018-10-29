@@ -84,7 +84,7 @@ def setup_network_params(config):
         storage.GENESIS_HASH = config.get('network', 'genesis_hash')
 
 
-def create_config(filename=None):
+def create_config(filename=None, testnet=False):
     config = ConfigParser.ConfigParser()
     # set some defaults, which will be overwritten by the config file
     config.add_section('server')
@@ -116,7 +116,13 @@ def create_config(filename=None):
 
     # set network parameters
     config.add_section('network')
-    config.set('network', 'type', 'sibcoin_main')
+    
+    if testnet:
+        print "run in testnet"
+        config.set('network', 'type', 'sibcoin_test')
+    else:
+        print "run in mainnet"
+        config.set('network', 'type', 'sibcoin_main')
 
     # try to find the config file in the default paths
     if not filename:
@@ -299,8 +305,10 @@ if __name__ == '__main__':
                         help='specify a configuration file')
     parser.add_argument('command', nargs='*', default=[],
                         help='send a command to the server')
+    parser.add_argument('-testnet', action='store_true',
+                        help='run server in testnet')
     args = parser.parse_args()
-    _config = create_config(args.conf)
+    _config = create_config(args.conf, args.testnet)
 
     electrum_rpc_port = get_port(_config, 'electrum_rpc_port')
 

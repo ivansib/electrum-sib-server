@@ -3,6 +3,7 @@
 *.o
 .gitignore
 electrum.conf
+electrum_test.conf
 .idea/
 build/
 dist/
@@ -14,7 +15,8 @@ electrum_data/undo/*
 electrum_data/utxo/*
 electrum_data/blockchain_headers
 electrum_data/
-data-sibcoind/
+data_sibcoind/
+data_sibcoind_test/
 x11_gost_hash/
 electrum_sib.conf
 .idea/
